@@ -1,13 +1,10 @@
-# flutter_bluetooth_plus
+# flutter_bluetooth_printer
 
-Flutter plugin that is based on https://github.com/andrey-ushakov/flutter_bluetooth_basic 
 modified to support virtual bluetooth printer in android POS devices
 
 
 Flutter plugin that allows to find bluetooth devices & send raw bytes data.
 Supports both Android and iOS.
-
-Inspired by [bluetooth_print](https://github.com/thon-ju/bluetooth_print).
 
 
 ## Main Features
@@ -48,6 +45,3 @@ await bluetoothManager.writeData(bytes);
 
 await bluetoothManager.disconnect();
 ```
-
-## See also
-* Example of usage in a project: [esc_pos_printer](https://github.com/andrey-ushakov/esc_pos_printer)
