@@ -109,11 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 +
                 'Name : Sagar Singh \n Address : A396, Vaishali Nagar, Jaipur \n Designation : Back-end Developer \n Location : Jaipur\n\n\n\n')
         .toList();
-
-    // Set codetable west. Add import 'dart:typed_data';
-    // List<int> bytes = Uint8List.fromList(List.from('\x1Bt'.codeUnits)..add(6));
-    // Text with special characters
-    // bytes += latin1.encode('blåbærgrød\n\n\n');
     print('\n\n\n');
     print(_sendData);
 
