@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_plus/flutter_bluetooth_plus.dart';
+import 'package:flutter_bluetooth_plus_example/PrintPage/print_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -64,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         case BluetoothManager.DISCONNECTED:
           setState(() {
             _connected = false;
-            tips = 'Disconnect Success';
+            tips = 'Disconnected';
           });
           break;
         default:
@@ -96,24 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await bluetoothManager.disconnect();
   }
 
-  void _sendData() async {
-    String Company_name = 'GramPower';
-    List<int> bytes = latin1
-        .encode(
-            // Company NameF
-            '$Company_name\n'
-                // Address
-                +
-                '3rd Floor,Arihant Plaza,Block F,Vaishali Nagar,Jaipur 302021 \n\n'
-                // Customer Name and Details
-                +
-                'Name : Sagar Singh \n Address : A396, Vaishali Nagar, Jaipur \n Designation : Back-end Developer \n Location : Jaipur\n\n\n\n')
-        .toList();
-    print('\n\n\n');
-    print(_sendData);
-
-    await bluetoothManager.writeData(bytes);
-  }
+/////////////
 
   @override
   Widget build(BuildContext context) {
@@ -216,9 +200,24 @@ class _MyHomePageState extends State<MyHomePage> {
                           //   child: Icon(Icons.print),
                           //   onPressed: _connected ? _sendData : null,
                           // ),
+                          _connected ?
                           FloatingActionButton(                      
                             child: Icon(Icons.arrow_circle_right),
-                            onPressed: _connected ? _sendData : null,
+                            onPressed: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => PrintPage()),
+                              );
+                            },
+                          ) : 
+                          FloatingActionButton(                      
+                            child: Icon(Icons.arrow_circle_right),
+                            onPressed: (){
+                              final snackBar = SnackBar(
+                                content: const Text('Please Connect With Bluetooth Device'),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            },
                           ),
                         ],
                       ),
